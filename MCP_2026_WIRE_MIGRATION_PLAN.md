@@ -31,7 +31,7 @@ legacy; a client that requires `Mcp-Session-Id` is legacy. Both can be bridged â
 
 ## 2. Where the estate stands
 
-**Estate under management:** 371 MCP servers / 2,016 tools (218 MEOK core + 153 SOV3 federation),
+**Estate under management:** 371 MCP servers / 2,016 tools (218 MEOK core + 153 sovereign-stack federation),
 across the CSOAI-ORG GitHub organisation (751 repos).
 
 **What is checked out locally and therefore auditable today:** three depth-capped passes over
