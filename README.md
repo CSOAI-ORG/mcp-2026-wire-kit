@@ -36,7 +36,38 @@ app = ShimASGI(my_mcp_asgi_app)     # legacy + 2026 clients both work
 # 3. Prove it
 python3 mcp2026_proxy_proof.py     # 7/7 PASS
 python3 test_mcp_wire.py           # 91 tests, stdlib only
+
+# 4. Run the kit as an MCP server (stdio)
+python3 mcp_wire_server.py --selftest   # introspection proof, 7/7
 ```
+
+## Install + use in an MCP client
+
+No dependencies, no build step — clone and point your client at it:
+
+```bash
+git clone https://github.com/CSOAI-ORG/mcp-2026-wire-kit.git
+cd mcp-2026-wire-kit
+python3 mcp_wire_server.py   # stdio MCP server, speaks 2026-07-28 + 2025-11-25
+```
+
+Claude Desktop / any stdio MCP client (`claude_desktop_config.json` shape):
+
+```json
+{
+  "mcpServers": {
+    "wire-kit": {
+      "command": "python3",
+      "args": ["/absolute/path/to/mcp-2026-wire-kit/mcp_wire_server.py"]
+    }
+  }
+}
+```
+
+Tools exposed: `wire_status` (deadline countdown), `wire_audit` (era +
+migration classifier), `wire_translate` (legacy ↔ 2026 message translation).
+
+Docker (catalog/CI introspection): `docker build -t wire-kit . && docker run -i wire-kit`.
 
 ## Migration classes (from the plan)
 
